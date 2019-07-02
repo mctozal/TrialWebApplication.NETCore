@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using trialBusiness;
 
 namespace trialWebAPI.Controllers
 {
@@ -41,5 +42,21 @@ namespace trialWebAPI.Controllers
         public void Delete(int id)
         {
         }
+
+
+        private IUserManager _userManager;
+        public ValuesController(IUserManager userManager)
+
+        {
+            _userManager = userManager;
+        }
+
+        [HttpGet]
+        public ExampleController Get()
+        {
+            return _userManager.GetExampleModel();
+        }
+
+
     }
 }

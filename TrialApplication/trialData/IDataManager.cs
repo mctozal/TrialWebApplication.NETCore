@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using trialData;
+using System.Text;
 
-namespace trialBusiness
+namespace trialData
 {
-    public interface IUserManager
+    public interface IDataManager
     {
         ExampleModel GetExampleModel();
     }
