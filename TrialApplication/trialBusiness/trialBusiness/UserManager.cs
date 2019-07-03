@@ -7,7 +7,7 @@ namespace trialBusiness
 {
     public class UserManager : IUserManager
     {
-        private IDataManager _datamanager;
+        private readonly IDataManager _datamanager;
         public UserManager(IDataManager dataManager)
         {
             _datamanager = dataManager;

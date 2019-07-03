@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.Swagger;
+using trialWebAPI.Models;
+using trialBusiness;
+using trialData;
 
 namespace trialWebAPI
 {
@@ -26,6 +30,8 @@ namespace trialWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            Container.Register(services, Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +48,12 @@ namespace trialWebAPI
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+       
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller=ValuesController}");
+            });
         }
     }
 }
